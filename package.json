@@ -1,0 +1,16 @@
+{
+  "name": "laragon-alternative",
+  "version": "1.0.0",
+  "description": "Laragon alternative for Windows, a portable development environment for PHP/Laravel.",
+  "license": "ISC",
+  "author": "Rifat Hossain",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "electron": "^36.4.0"
+  }
+}

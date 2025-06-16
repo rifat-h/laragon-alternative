@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyDevEnv</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h2>MyDevEnv Control Panel</h2>
+
+  <div class="services">
+    <div class="service">
+      <label>Apache:</label>
+      <button id="apache-toggle" onclick="toggleApache()">▶ Start</button>
+    </div>
+    <div class="service">
+      <label>MySQL:</label>
+      <button id="mysql-toggle" onclick="toggleMySQL()">▶ Start</button>
+    </div>
+    <div class="service">
+      <button onclick="window.api.openPhpMyAdmin()">🌐 Open phpMyAdmin</button>
+    </div>
+  </div>
+
+  <div class="php-switcher">
+    <label>PHP Version:</label>
+    <select id="php-version">
+      <option value="php74">PHP 7.4</option>
+      <option value="php80">PHP 8.0</option>
+      <option value="php82">PHP 8.2</option>
+    </select>
+    <button onclick="window.api.switchPhpVersion(document.getElementById('php-version').value)">🔁 Apply</button>
+  </div>
+
+  <div class="controls">
+    <button onclick="window.api.startAll()">▶ Start All</button>
+    <button onclick="window.api.stopAll()">⛔ Stop All</button>
+    <button onclick="window.api.exitApp()">❌ Exit Application</button>
+  </div>
+
+  <!-- Front logic moved to frontLogic.js -->
+  <script src="frontLogic.js"></script>
+</body>
+</html>
