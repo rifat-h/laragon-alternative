@@ -18,8 +18,15 @@ function createWindow() {
 app.whenReady().then(createWindow);
 
 ipcMain.on('apache:start', () => {
-  console.log('Apache start requested');
+  exec(`"${httpdExe}" -k start -f "${path.join(apacheDir, 'conf', 'httpd.conf')}"`, { cwd: apacheDir }, (err) => {
+    if (err) {
+      console.error('Failed to start Apache:', err.message);
+    } else {
+      console.log('Apache started');
+    }
+  });
 });
+
 ipcMain.on('apache:stop', () => {
   console.log('Apache stop requested');
 });
