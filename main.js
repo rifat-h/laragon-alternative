@@ -17,19 +17,35 @@ function createWindow() {
 
 app.whenReady().then(createWindow);
 
+// Define the path to your local Apache httpd.exe
+const apacheDir = path.join(__dirname, 'bin', 'apache');
+const httpdExe = path.join(apacheDir, 'bin', 'httpd.exe');
+
 ipcMain.on('apache:start', () => {
-  exec(`"${httpdExe}" -k start -f "${path.join(apacheDir, 'conf', 'httpd.conf')}"`, { cwd: apacheDir }, (err) => {
+  const confPath = path.join(apacheDir, 'conf', 'httpd.conf');
+  const command = `"${httpdExe}" -f "${confPath}"`;
+
+  exec(command, { cwd: apacheDir }, (err, stdout, stderr) => {
     if (err) {
       console.error('Failed to start Apache:', err.message);
+      console.error(stderr);
     } else {
-      console.log('Apache started');
+      console.log('Apache started successfully');
+      console.log(stdout);
     }
   });
 });
 
 ipcMain.on('apache:stop', () => {
-  console.log('Apache stop requested');
+  exec('taskkill /F /IM httpd.exe', (err, stdout, stderr) => {
+    if (err) {
+      console.error('❌ Failed to stop Apache:', err.message);
+    } else {
+      console.log('✅ Apache stopped successfully');
+    }
+  });
 });
+
 
 ipcMain.on('mysql:start', () => {
   console.log('MySQL start requested');

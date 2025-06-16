@@ -1,0 +1,17 @@
+[Tue Jun 17 01:28:03.413482 2025] [mpm_winnt:notice] [pid 3972:tid 448] AH00455: Apache/2.4.63 (Win64) configured -- resuming normal operations
+[Tue Jun 17 01:28:03.415476 2025] [mpm_winnt:notice] [pid 3972:tid 448] AH00456: Apache Lounge VS17 Server built: Feb  3 2025 10:10:51
+[Tue Jun 17 01:28:03.415476 2025] [core:notice] [pid 3972:tid 448] AH00094: Command line: 'C:\\Users\\rifat\\OneDrive\\Desktop\\laragon-alternative\\bin\\apache\\bin\\httpd.exe -d C:/Users/rifat/OneDrive/Desktop/laragon-alternative/bin/apache -f C:\\Users\\rifat\\OneDrive\\Desktop\\laragon-alternative\\bin\\apache\\conf\\httpd.conf'
+[Tue Jun 17 01:28:03.420463 2025] [mpm_winnt:notice] [pid 3972:tid 448] AH00418: Parent: Created child process 13760
+[Tue Jun 17 01:28:04.192353 2025] [mpm_winnt:notice] [pid 13760:tid 448] AH00354: Child: Starting 64 worker threads.
+[Tue Jun 17 01:29:44.722564 2025] [core:warn] [pid 4036:tid 476] AH00098: pid file C:/Users/rifat/OneDrive/Desktop/laragon-alternative/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Jun 17 01:29:44.724653 2025] [mpm_winnt:notice] [pid 4036:tid 476] AH00455: Apache/2.4.63 (Win64) configured -- resuming normal operations
+[Tue Jun 17 01:29:44.724653 2025] [mpm_winnt:notice] [pid 4036:tid 476] AH00456: Apache Lounge VS17 Server built: Feb  3 2025 10:10:51
+[Tue Jun 17 01:29:44.724653 2025] [core:notice] [pid 4036:tid 476] AH00094: Command line: 'C:\\Users\\rifat\\OneDrive\\Desktop\\laragon-alternative\\bin\\apache\\bin\\httpd.exe -d C:/Users/rifat/OneDrive/Desktop/laragon-alternative/bin/apache -f C:\\Users\\rifat\\OneDrive\\Desktop\\laragon-alternative\\bin\\apache\\conf\\httpd.conf'
+[Tue Jun 17 01:29:44.730052 2025] [mpm_winnt:notice] [pid 4036:tid 476] AH00418: Parent: Created child process 6168
+[Tue Jun 17 01:29:45.437755 2025] [mpm_winnt:notice] [pid 6168:tid 448] AH00354: Child: Starting 64 worker threads.
+[Tue Jun 17 01:29:53.688907 2025] [core:warn] [pid 3020:tid 432] AH00098: pid file C:/Users/rifat/OneDrive/Desktop/laragon-alternative/bin/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Jun 17 01:29:53.690956 2025] [mpm_winnt:notice] [pid 3020:tid 432] AH00455: Apache/2.4.63 (Win64) configured -- resuming normal operations
+[Tue Jun 17 01:29:53.692415 2025] [mpm_winnt:notice] [pid 3020:tid 432] AH00456: Apache Lounge VS17 Server built: Feb  3 2025 10:10:51
+[Tue Jun 17 01:29:53.692415 2025] [core:notice] [pid 3020:tid 432] AH00094: Command line: 'C:\\Users\\rifat\\OneDrive\\Desktop\\laragon-alternative\\bin\\apache\\bin\\httpd.exe -d C:/Users/rifat/OneDrive/Desktop/laragon-alternative/bin/apache -f C:\\Users\\rifat\\OneDrive\\Desktop\\laragon-alternative\\bin\\apache\\conf\\httpd.conf'
+[Tue Jun 17 01:29:53.696408 2025] [mpm_winnt:notice] [pid 3020:tid 432] AH00418: Parent: Created child process 14424
+[Tue Jun 17 01:29:54.408834 2025] [mpm_winnt:notice] [pid 14424:tid 476] AH00354: Child: Starting 64 worker threads.
