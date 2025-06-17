@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { exec } = require('child_process');
+const fs = require('fs');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -72,4 +73,15 @@ ipcMain.on('services:stopAll', () => {
 
 ipcMain.on('app:exit', () => {
   app.quit();
+});
+
+ipcMain.handle('php:getVersions', async () => {
+  const phpDir = path.join(__dirname, 'bin', 'php');
+  console.log(phpDir);
+  
+  try {
+    return fs.readdirSync(phpDir).filter(f => f.startsWith('php-'));
+  } catch (e) {
+    return [];
+  }
 });
