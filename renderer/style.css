@@ -1,52 +1,433 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: sans-serif;
-  padding: 20px;
-  background: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #333;
+  height: 100vh;
+  overflow: hidden;
+  -webkit-app-region: drag; /* Allow dragging the window */
 }
 
-h2 {
-  margin-bottom: 20px;
+/* Prevent dragging on interactive elements */
+button, select, input, .status-log {
+  -webkit-app-region: no-drag;
+}
+
+/* Window Controls */
+.window-controls {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  z-index: 1000;
+  -webkit-app-region: no-drag;
+}
+
+.window-btn {
+  width: 46px;
+  height: 32px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.window-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.window-btn.close:hover {
+  background: #ff5f57;
+}
+
+/* Main Container */
+.container {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 40px 20px 20px;
+  -webkit-app-region: no-drag;
+}
+
+/* Header */
+header {
   text-align: center;
+  margin-bottom: 30px;
+  color: white;
 }
 
-.services, .php-switcher, .controls {
-  background: white;
+header h1 {
+  font-size: 2.5em;
+  font-weight: 300;
+  margin-bottom: 5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+  font-size: 1.1em;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* Status Overview */
+.status-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.status-card {
+  background: rgba(255, 255, 255, 0.95);
   padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.status-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Service Groups */
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.service-group {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.service-group h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-bottom: 2px solid #f0f2f5;
+  padding-bottom: 10px;
+}
+
+/* Individual Services */
 .service {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f2f5;
 }
 
+.service:last-child {
+  border-bottom: none;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.service-desc {
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Status Indicators */
 .status {
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 6px;
-}
-
-.status.green { background-color: #28a745; color: white; }
-.status.red   { background-color: #dc3545; color: white; }
-
-button {
-  background-color: #007bff;
-  border: none;
+  display: inline-block;
   padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-running {
+  background: #28a745;
   color: white;
-  border-radius: 4px;
+}
+
+.status-stopped {
+  background: #6c757d;
+  color: white;
+}
+
+.status-starting, .status-stopping {
+  background: #ffc107;
+  color: #212529;
+}
+
+.status-error {
+  background: #dc3545;
+  color: white;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  min-width: 120px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-select {
-  padding: 5px 10px;
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Button Variants */
+.btn-start {
+  background: #28a745;
+  color: white;
+}
+
+.btn-start:hover {
+  background: #218838;
+}
+
+.btn-stop {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-stop:hover {
+  background: #c82333;
+}
+
+.btn-loading {
+  background: #ffc107;
+  color: #212529;
+}
+
+.btn-error {
+  background: #dc3545;
+  color: white;
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #545b62;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #333;
+  border: 2px solid #333;
+}
+
+.btn-outline:hover {
+  background: #333;
+  color: white;
+}
+
+/* PHP Switcher */
+.php-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.php-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.php-select {
+  padding: 8px 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  background: white;
+  min-width: 180px;
+  font-size: 0.9em;
+}
+
+.php-select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+}
+
+/* Controls Section */
+.controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Status Log */
+.log-section {
+  margin-top: 30px;
+}
+
+.log-section h2 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.status-log {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  height: 200px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85em;
+  line-height: 1.4;
+}
+
+.log-entry {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding: 3px 0;
+}
+
+.timestamp {
+  color: #888;
+  margin-right: 10px;
+  font-size: 0.8em;
+  min-width: 70px;
+}
+
+.log-success {
+  color: #28a745;
+}
+
+.log-error {
+  color: #dc3545;
+}
+
+.log-warning {
+  color: #ffc107;
+}
+
+.log-info {
+  color: #17a2b8;
+}
+
+/* Footer */
+footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.footer-info small {
+  opacity: 0.8;
+}
+
+/* Custom Scrollbar */
+.status-log::-webkit-scrollbar {
+  width: 8px;
+}
+
+.status-log::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.status-log::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.status-log::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 50px 15px 15px;
+  }
+  
+  header h1 {
+    font-size: 2em;
+  }
+  
+  .service {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .service-info {
+    width: 100%;
+  }
+  
+  .php-switcher {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .controls {
+    flex-direction: column;
+  }
 }

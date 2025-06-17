@@ -1,39 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MyDevEnv</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyDevEnv Control Panel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>MyDevEnv Control Panel</h2>
-
-  <div class="services">
-    <div class="service">
-      <label>Apache:</label>
-      <button id="apache-toggle" onclick="toggleApache()">▶ Start</button>
-    </div>
-    <div class="service">
-      <label>MySQL:</label>
-      <button id="mysql-toggle" onclick="toggleMySQL()">▶ Start</button>
-    </div>
-    <div class="service">
-      <button onclick="window.api.openPhpMyAdmin()">🌐 Open phpMyAdmin</button>
-    </div>
+  <!-- Window Controls (for frameless window) -->
+  <div class="window-controls">
+    <button id="minimize-btn" class="window-btn">−</button>
+    <button id="maximize-btn" class="window-btn">□</button>
+    <button id="close-btn" class="window-btn close">×</button>
   </div>
 
-  <div class="php-switcher">
-    <label>PHP Version:</label>
-    <select id="php-version"></select>
-    <button onclick="window.api.switchPhpVersion(document.getElementById('php-version').value)">🔁 Apply</button>
+  <div class="container">
+    <header>
+      <h1>MyDevEnv Control Panel</h1>
+      <p class="subtitle">Local Development Environment Manager</p>
+    </header>
+
+    <!-- Service Status Overview -->
+    <div class="status-overview">
+      <div class="status-card">
+        <h3>Apache</h3>
+        <span id="apache-status" class="status status-stopped">Stopped</span>
+      </div>
+      <div class="status-card">
+        <h3>MySQL</h3>
+        <span id="mysql-status" class="status status-stopped">Stopped</span>
+      </div>
+    </div>
+
+    <!-- Service Controls -->
+    <div class="services">
+      <div class="service-group">
+        <h2>Services</h2>
+        
+        <div class="service">
+          <div class="service-info">
+            <label class="service-label">Apache HTTP Server</label>
+            <small class="service-desc">Web server for serving your applications</small>
+          </div>
+          <button id="apache-toggle" class="btn btn-start">▶ Start</button>
+        </div>
+
+        <div class="service">
+          <div class="service-info">
+            <label class="service-label">MySQL Database</label>
+            <small class="service-desc">Database server for your applications</small>
+          </div>
+          <button id="mysql-toggle" class="btn btn-start">▶ Start</button>
+        </div>
+
+        <div class="service">
+          <div class="service-info">
+            <label class="service-label">phpMyAdmin</label>
+            <small class="service-desc">Web-based MySQL administration tool</small>
+          </div>
+          <button id="open-phpmyadmin" class="btn btn-secondary">🌐 Open phpMyAdmin</button>
+        </div>
+      </div>
+
+      <!-- PHP Version Management -->
+      <div class="service-group">
+        <h2>PHP Configuration</h2>
+        
+        <div class="php-switcher">
+          <div class="service-info">
+            <label class="service-label">PHP Version</label>
+            <small class="service-desc">Switch between different PHP versions</small>
+          </div>
+          <div class="php-controls">
+            <select id="php-version-select" class="php-select">
+              <option value="">Loading PHP versions...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service Management -->
+      <div class="service-group">
+        <h2>Service Management</h2>
+        
+        <div class="controls">
+          <button id="start-all" class="btn btn-primary">▶ Start All Services</button>
+          <button id="stop-all" class="btn btn-danger">⛔ Stop All Services</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Log -->
+    <div class="log-section">
+      <h2>Activity Log</h2>
+      <div id="status-log" class="status-log">
+        <div class="log-entry log-info">
+          <span class="timestamp">--:--:--</span> 
+          Application starting...
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-controls">
+        <button id="exit-app" class="btn btn-outline">❌ Exit Application</button>
+      </div>
+      <div class="footer-info">
+        <small>MyDevEnv - Local Development Environment Manager</small>
+      </div>
+    </footer>
   </div>
 
-  <div class="controls">
-    <button onclick="window.api.startAll()">▶ Start All</button>
-    <button onclick="window.api.stopAll()">⛔ Stop All</button>
-    <button onclick="window.api.exitApp()">❌ Exit Application</button>
-  </div>
-
-  <!-- Front logic moved to frontLogic.js -->
   <script src="frontLogic.js"></script>
 </body>
 </html>
